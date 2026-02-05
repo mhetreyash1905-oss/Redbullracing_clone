@@ -174,6 +174,12 @@ button {
     z-index: 1001;
 }
 
+/* Logo image styling */
+.logo-image {
+    height: 50px;
+    width: auto;
+}
+
 .logo-container {
     display: flex;
     flex-direction: column;
@@ -292,6 +298,20 @@ button {
         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="none" stroke="%23CC0000" stroke-width="0.5" opacity="0.3"/></svg>');
     background-size: cover, 200px;
     animation: heroBackground 20s ease infinite;
+}
+
+/* Hero background video */
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
 }
 
 /* Background animation */
@@ -514,7 +534,10 @@ button {
     position: relative;
     width: 100%;
     padding-top: 75%;
-    background: linear-gradient(135deg, #2A2A3E 0%, #1E1E2E 100%);
+    background: linear-gradient(135deg, rgba(42, 42, 62, 0.6) 0%, rgba(30, 30, 46, 0.7) 100%),
+        url('fanzone.avif');
+    background-size: cover;
+    background-position: center;
 }
 
 .story-large .story-image {
@@ -523,15 +546,24 @@ button {
 
 /* Story card background variations */
 .story-image.card-2 {
-    background: linear-gradient(135deg, #1E3A5F 0%, #0A1929 100%);
+    background: linear-gradient(135deg, rgba(30, 58, 95, 0.6) 0%, rgba(10, 25, 41, 0.7) 100%),
+        url('racing sim.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .story-image.card-3 {
-    background: linear-gradient(135deg, #3D1E1E 0%, #1E0A0A 100%);
+    background: linear-gradient(135deg, rgba(61, 30, 30, 0.6) 0%, rgba(30, 10, 10, 0.7) 100%),
+        url('new livery.avif');
+    background-size: cover;
+    background-position: center;
 }
 
 .story-image.card-4 {
-    background: linear-gradient(135deg, #1E3D1E 0%, #0A1E0A 100%);
+    background: linear-gradient(135deg, rgba(30, 61, 30, 0.6) 0%, rgba(10, 30, 10, 0.7) 100%),
+        url('new launch.avif');
+    background-size: cover;
+    background-position: center;
 }
 
 /* Story overlay gradient */
@@ -851,17 +883,26 @@ button {
 
 /* Driver 1 (Max Verstappen) background */
 .team-card-image.driver-1 {
-    background: linear-gradient(180deg, #1E2D3D 0%, #0A1420 100%);
+    background: linear-gradient(180deg, rgba(30, 45, 61, 0.7) 0%, rgba(10, 20, 32, 0.8) 100%),
+        url('verstappen.png');
+    background-size: cover;
+    background-position: center top;
 }
 
-/* Driver 2 (Sergio Pérez) background */
+/* Driver 2 (Isack) background */
 .team-card-image.driver-2 {
-    background: linear-gradient(180deg, #2D1E1E 0%, #1E0A0A 100%);
+    background: linear-gradient(180deg, rgba(45, 30, 30, 0.7) 0%, rgba(30, 10, 10, 0.8) 100%),
+        url('Isack.png');
+    background-size: cover;
+    background-position: center top;
 }
 
 /* Team principal background */
 .team-card-image.principal {
-    background: linear-gradient(180deg, #252538 0%, #18182A 100%);
+    background: linear-gradient(180deg, rgba(37, 37, 56, 0.7) 0%, rgba(24, 24, 42, 0.8) 100%),
+        url('team principal.png');
+    background-size: cover;
+    background-position: center top;
 }
 
 /* Driver number overlay */
