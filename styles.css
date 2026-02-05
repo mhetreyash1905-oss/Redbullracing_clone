@@ -1,182 +1,119 @@
-/*
-=====================================================
-ORACLE RED BULL RACING - WEBSITE CLONE
-MAIN STYLESHEET
-=====================================================
-This stylesheet contains all styles for the Red Bull Racing 
-website clone. Optimized for PC web browsers.
-*/
+/* ORACLE RED BULL RACING - MAIN STYLESHEET */
 
-/* 
-=====================================================
-CSS CUSTOM PROPERTIES (VARIABLES)
-=====================================================
-Centralized color palette, typography, and spacing values.
-Makes it easy to update the design across the entire site.
-*/
+/* CSS CUSTOM PROPERTIES */
 :root {
-    /* ---- Primary Colors ---- */
-    /* Red Bull Racing brand colors */
+    /* Primary Colors */
     --color-primary: #1E1E2E;
-    /* Dark navy blue - main background */
     --color-secondary: #CC0000;
-    /* Red Bull red - accent color */
     --color-accent: #FFD700;
-    /* Gold/Yellow - highlights */
 
-    /* ---- Background Colors ---- */
+    /* Background Colors */
     --color-bg-dark: #0A0A12;
-    /* Darker background for sections */
     --color-bg-card: #1A1A2A;
-    /* Card backgrounds */
     --color-bg-hover: #252538;
-    /* Hover state backgrounds */
 
-    /* ---- Text Colors ---- */
+    /* Text Colors */
     --color-text-primary: #FFFFFF;
-    /* Primary text - white */
     --color-text-secondary: #B0B0C0;
-    /* Secondary text - light gray */
     --color-text-muted: #6B6B80;
-    /* Muted text - dark gray */
 
-    /* ---- Gradient Definitions ---- */
-    /* Red Bull signature gradient */
+    /* Gradients */
     --gradient-primary: linear-gradient(135deg, #CC0000 0%, #FF4444 50%, #FFD700 100%);
-    /* Dark overlay gradient for images */
     --gradient-overlay: linear-gradient(180deg, transparent 0%, rgba(10, 10, 18, 0.8) 100%);
-    /* Hero section gradient */
     --gradient-hero: linear-gradient(135deg, rgba(30, 30, 46, 0.9) 0%, rgba(10, 10, 18, 0.7) 100%);
 
-    /* ---- Typography ---- */
+    /* Typography */
     --font-primary: 'Titillium Web', sans-serif;
-
-    /* Font Sizes - Using rem for accessibility */
     --font-size-xs: 0.75rem;
-    /* 12px */
     --font-size-sm: 0.875rem;
-    /* 14px */
     --font-size-base: 1rem;
-    /* 16px */
     --font-size-lg: 1.125rem;
-    /* 18px */
     --font-size-xl: 1.25rem;
-    /* 20px */
     --font-size-2xl: 1.5rem;
-    /* 24px */
     --font-size-3xl: 2rem;
-    /* 32px */
     --font-size-4xl: 2.5rem;
-    /* 40px */
     --font-size-5xl: 3.5rem;
-    /* 56px */
     --font-size-hero: 4.5rem;
-    /* 72px - Hero headlines */
 
-    /* ---- Spacing Scale ---- */
+    /* Spacing */
     --space-xs: 0.25rem;
-    /* 4px */
     --space-sm: 0.5rem;
-    /* 8px */
     --space-md: 1rem;
-    /* 16px */
     --space-lg: 1.5rem;
-    /* 24px */
     --space-xl: 2rem;
-    /* 32px */
     --space-2xl: 3rem;
-    /* 48px */
     --space-3xl: 4rem;
-    /* 64px */
     --space-4xl: 6rem;
-    /* 96px */
 
-    /* ---- Border Radius ---- */
+    /* Border Radius */
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
     --radius-xl: 16px;
     --radius-full: 9999px;
 
-    /* ---- Transitions ---- */
+    /* Transitions */
     --transition-fast: 150ms ease;
     --transition-base: 250ms ease;
     --transition-slow: 400ms ease;
     --transition-bounce: 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    /* ---- Shadows ---- */
+    /* Shadows */
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
     --shadow-glow: 0 0 20px rgba(204, 0, 0, 0.4);
 
-    /* ---- Layout ---- */
+    /* Layout */
     --header-height: 80px;
     --container-max-width: 1400px;
     --container-padding: 2rem;
 }
 
-/* 
-=====================================================
-CSS RESET & BASE STYLES
-=====================================================
-Normalize browser defaults and set base styles.
-*/
-
-/* Box-sizing reset - easier width/height calculations */
+/* CSS RESET */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
-/* Remove default margins */
 * {
     margin: 0;
     padding: 0;
 }
 
-/* Smooth scrolling for anchor links */
 html {
     scroll-behavior: smooth;
-    /* Prevents horizontal overflow */
     overflow-x: hidden;
 }
 
-/* Base body styles */
 body {
     font-family: var(--font-primary);
     font-size: var(--font-size-base);
     line-height: 1.6;
     color: var(--color-text-primary);
     background-color: var(--color-primary);
-    /* Prevents horizontal overflow */
     overflow-x: hidden;
-    /* Ensure minimum height fills viewport */
     min-height: 100vh;
 }
 
-/* Remove default list styles */
 ul,
 ol {
     list-style: none;
 }
 
-/* Remove default anchor styles */
 a {
     text-decoration: none;
     color: inherit;
     transition: color var(--transition-base);
 }
 
-/* Responsive images */
 img {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* Remove button default styles */
 button {
     font-family: inherit;
     font-size: inherit;
@@ -186,25 +123,17 @@ button {
     color: inherit;
 }
 
-/* Focus styles for accessibility */
 :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
 }
 
-/* Selection color */
 ::selection {
     background-color: var(--color-secondary);
     color: var(--color-text-primary);
 }
 
-/* 
-=====================================================
-HEADER & NAVIGATION STYLES
-=====================================================
-Fixed navigation bar with logo, menu items, and actions.
-Includes mobile hamburger menu and scroll effects.
-*/
+/* HEADER & NAVIGATION */
 
 /* Header container - fixed at top */
 .header {
@@ -221,7 +150,7 @@ Includes mobile hamburger menu and scroll effects.
     transition: all var(--transition-base);
 }
 
-/* Header scrolled state - adds shadow and solid background */
+/* Header scrolled state */
 .header.scrolled {
     background: rgba(10, 10, 18, 0.98);
     box-shadow: var(--shadow-lg);
@@ -238,22 +167,20 @@ Includes mobile hamburger menu and scroll effects.
     padding: 0 var(--container-padding);
 }
 
-/* Logo container styles */
+/* Logo container */
 .logo {
     display: flex;
     align-items: center;
     z-index: 1001;
-    /* Above mobile menu */
 }
 
-/* Logo text container - stacked text effect */
 .logo-container {
     display: flex;
     flex-direction: column;
     line-height: 1.1;
 }
 
-/* Oracle text (title partner) */
+/* Oracle text */
 .logo-text {
     font-size: var(--font-size-xs);
     font-weight: 400;
@@ -277,13 +204,12 @@ Includes mobile hamburger menu and scroll effects.
     letter-spacing: 0.2em;
 }
 
-/* Navigation menu - horizontal list */
+/* Navigation menu */
 .nav-menu {
     display: flex;
     gap: var(--space-xl);
 }
 
-/* Individual nav items */
 .nav-item {
     position: relative;
 }
@@ -299,7 +225,7 @@ Includes mobile hamburger menu and scroll effects.
     transition: color var(--transition-base);
 }
 
-/* Nav link hover effect - underline animation */
+/* Nav link underline animation */
 .nav-link::after {
     content: '';
     position: absolute;
@@ -311,12 +237,11 @@ Includes mobile hamburger menu and scroll effects.
     transition: width var(--transition-base);
 }
 
-/* Expand underline on hover */
 .nav-link:hover::after {
     width: 100%;
 }
 
-/* Navigation actions container (search, newsletter, hamburger) */
+/* Navigation actions container */
 .nav-actions {
     display: flex;
     align-items: center;
@@ -336,22 +261,13 @@ Includes mobile hamburger menu and scroll effects.
     transition: all var(--transition-base);
 }
 
-/* Action button hover effect */
 .action-btn:hover {
     background: var(--color-secondary);
     border-color: var(--color-secondary);
     transform: scale(1.05);
 }
 
-
-
-/* 
-=====================================================
-HERO SECTION STYLES
-=====================================================
-Full-screen hero with background image/video,
-overlay gradient, and animated content.
-*/
+/* HERO SECTION */
 
 /* Hero section container */
 .hero {
@@ -371,7 +287,6 @@ overlay gradient, and animated content.
     left: 0;
     right: 0;
     bottom: 0;
-    /* Placeholder gradient background - replace with actual image */
     background:
         linear-gradient(135deg, #1E1E2E 0%, #0A0A12 50%, #1E1E2E 100%),
         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="none" stroke="%23CC0000" stroke-width="0.5" opacity="0.3"/></svg>');
@@ -379,7 +294,7 @@ overlay gradient, and animated content.
     animation: heroBackground 20s ease infinite;
 }
 
-/* Subtle background animation */
+/* Background animation */
 @keyframes heroBackground {
 
     0%,
@@ -409,11 +324,10 @@ overlay gradient, and animated content.
     max-width: 900px;
     padding: var(--space-2xl);
     text-align: center;
-    /* Fade in animation */
     animation: fadeInUp 1s ease forwards;
 }
 
-/* Fade in from below animation */
+/* Fade in animation */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -449,7 +363,6 @@ overlay gradient, and animated content.
     margin-bottom: var(--space-lg);
     text-transform: uppercase;
     letter-spacing: 0.02em;
-    /* Text gradient effect */
     background: linear-gradient(135deg, #FFFFFF 0%, #E0E0E0 50%, #FFD700 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -485,13 +398,11 @@ overlay gradient, and animated content.
     box-shadow: var(--shadow-glow);
 }
 
-/* Hero button hover effect */
 .hero-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(204, 0, 0, 0.5);
 }
 
-/* Hero button icon animation */
 .hero-btn i {
     transition: transform var(--transition-base);
 }
@@ -500,16 +411,9 @@ overlay gradient, and animated content.
     transform: translateX(5px);
 }
 
+/* SECTION COMMON STYLES */
 
-
-/* 
-=====================================================
-SECTION COMMON STYLES
-=====================================================
-Shared styles for all content sections.
-*/
-
-/* Section headers - title and view all link */
+/* Section header - title and view all link */
 .section-header {
     display: flex;
     justify-content: space-between;
@@ -519,7 +423,7 @@ Shared styles for all content sections.
     padding: 0 var(--container-padding);
 }
 
-/* Section titles */
+/* Section title */
 .section-title {
     font-size: var(--font-size-3xl);
     font-weight: 700;
@@ -565,12 +469,7 @@ Shared styles for all content sections.
     transform: translateX(5px);
 }
 
-/* 
-=====================================================
-FEATURED STORIES SECTION
-=====================================================
-Grid layout for news/story cards with hover effects.
-*/
+/* FEATURED STORIES SECTION */
 
 /* Stories section container */
 .featured-stories {
@@ -578,7 +477,7 @@ Grid layout for news/story cards with hover effects.
     background: var(--color-bg-dark);
 }
 
-/* Stories grid - CSS Grid layout */
+/* Stories grid layout */
 .stories-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -588,7 +487,7 @@ Grid layout for news/story cards with hover effects.
     padding: 0 var(--container-padding);
 }
 
-/* Story card - base styles */
+/* Story card */
 .story-card {
     position: relative;
     border-radius: var(--radius-lg);
@@ -615,12 +514,9 @@ Grid layout for news/story cards with hover effects.
     position: relative;
     width: 100%;
     padding-top: 75%;
-    /* 4:3 aspect ratio */
-    /* Placeholder gradient backgrounds - replace with actual images */
     background: linear-gradient(135deg, #2A2A3E 0%, #1E1E2E 100%);
 }
 
-/* Large story image - taller */
 .story-large .story-image {
     padding-top: 100%;
 }
@@ -677,7 +573,6 @@ Grid layout for news/story cards with hover effects.
     line-height: 1.3;
 }
 
-/* Large card gets bigger title */
 .story-large .story-title {
     font-size: var(--font-size-2xl);
 }
@@ -713,12 +608,7 @@ Grid layout for news/story cards with hover effects.
     transform: translateX(5px);
 }
 
-/* 
-=====================================================
-NEXT RACE SECTION
-=====================================================
-Race countdown with circuit visualization.
-*/
+/* NEXT RACE SECTION */
 
 /* Race section container */
 .next-race {
@@ -825,7 +715,7 @@ Race countdown with circuit visualization.
     background-clip: text;
 }
 
-/* Countdown label (Days, Hours, etc.) */
+/* Countdown label */
 .countdown-label {
     font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
@@ -919,12 +809,7 @@ Race countdown with circuit visualization.
     border-radius: 2px;
 }
 
-/* 
-=====================================================
-TEAM SECTION
-=====================================================
-Team member cards with driver/personnel info.
-*/
+/* TEAM SECTION */
 
 /* Team section container */
 .team-section {
@@ -942,7 +827,7 @@ Team member cards with driver/personnel info.
     padding: 0 var(--container-padding);
 }
 
-/* Team card styles */
+/* Team card */
 .team-card {
     position: relative;
     border-radius: var(--radius-lg);
@@ -961,8 +846,6 @@ Team member cards with driver/personnel info.
     position: relative;
     width: 100%;
     padding-top: 120%;
-    /* Portrait aspect ratio */
-    /* Placeholder gradients - replace with actual images */
     background: linear-gradient(180deg, #2A2A3E 0%, #1E1E2E 100%);
 }
 
@@ -1057,12 +940,7 @@ Team member cards with driver/personnel info.
     color: var(--color-text-secondary);
 }
 
-/* 
-=====================================================
-PARTNERS SECTION
-=====================================================
-Partner/sponsor logos with horizontal scroll.
-*/
+/* PARTNERS SECTION */
 
 /* Partners section container */
 .partners-section {
@@ -1128,12 +1006,7 @@ Partner/sponsor logos with horizontal scroll.
     letter-spacing: 0.1em;
 }
 
-/* 
-=====================================================
-NEWSLETTER SECTION
-=====================================================
-Email subscription form with validation.
-*/
+/* NEWSLETTER SECTION */
 
 /* Newsletter section container */
 .newsletter-section {
@@ -1264,12 +1137,7 @@ Email subscription form with validation.
     color: var(--color-secondary);
 }
 
-/* 
-=====================================================
-FOOTER SECTION
-=====================================================
-Site footer with links, social, and legal info.
-*/
+/* FOOTER SECTION */
 
 /* Footer container */
 .footer {
@@ -1396,16 +1264,7 @@ Site footer with links, social, and legal info.
     font-style: italic;
 }
 
-
-
-/* 
-=====================================================
-UTILITY CLASSES
-=====================================================
-Helper classes for common styling needs.
-*/
-
-/* Screen reader only - visually hidden but accessible */
+/* UTILITY CLASSES */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -1418,17 +1277,14 @@ Helper classes for common styling needs.
     border: 0;
 }
 
-/* Hide element */
 .hidden {
     display: none !important;
 }
 
-/* Text alignment */
 .text-center {
     text-align: center;
 }
 
-/* Flex center */
 .flex-center {
     display: flex;
     align-items: center;
