@@ -1,29 +1,9 @@
 /*
-=====================================================
-ORACLE RED BULL RACING - WEBSITE CLONE
 MAIN JAVASCRIPT FILE
-=====================================================
-This JavaScript file handles all interactive functionality
-for the Red Bull Racing website clone, including:
-- Mobile navigation menu toggle
-- Header scroll effects
-- Countdown timer for next race
-- Newsletter form validation
-- Smooth scrolling
-- Back to top button
-- Animation triggers on scroll
 */
 
-/*
-=====================================================
-DOM CONTENT LOADED EVENT
-=====================================================
-Wait for the DOM to be fully loaded before running scripts.
-This ensures all elements are available for manipulation.
-*/
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize all functionality
-    initMobileMenu();          // Mobile hamburger menu
     initHeaderScroll();        // Header background on scroll
     initCountdown();           // Race countdown timer
     initNewsletterForm();      // Newsletter form validation
@@ -32,71 +12,9 @@ document.addEventListener('DOMContentLoaded', function () {
     initPartnersSlider();      // Partners infinite scroll
 });
 
-/*
-=====================================================
-MOBILE NAVIGATION MENU
-=====================================================
-Handles the hamburger menu toggle for mobile devices.
-Includes body scroll lock when menu is open.
-*/
-function initMobileMenu() {
-    // Get DOM elements
-    const hamburger = document.getElementById('hamburger');  // Hamburger button
-    const navMenu = document.getElementById('nav-menu');     // Navigation menu
-    const navLinks = document.querySelectorAll('.nav-link'); // All nav links
-
-    // Toggle menu when hamburger is clicked
-    hamburger.addEventListener('click', function () {
-        // Toggle 'active' class on hamburger (for X animation)
-        hamburger.classList.toggle('active');
-
-        // Toggle 'active' class on nav menu (slide in/out)
-        navMenu.classList.toggle('active');
-
-        // Toggle body scroll lock
-        // Prevents background scrolling when menu is open
-        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-    });
-
-    // Close menu when a nav link is clicked
-    navLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-            // Remove active class from hamburger and menu
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-
-            // Re-enable body scrolling
-            document.body.style.overflow = '';
-        });
-    });
-
-    // Close menu when clicking outside (on overlay area)
-    navMenu.addEventListener('click', function (event) {
-        // Only close if clicking directly on the menu (overlay)
-        // not on a nav item
-        if (event.target === navMenu) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
-
-    // Close menu on escape key press
-    document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape' && navMenu.classList.contains('active')) {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    });
-}
 
 /*
-=====================================================
 HEADER SCROLL EFFECT
-=====================================================
-Adds a 'scrolled' class to the header when the user
-scrolls down, changing its background and adding shadow.
 */
 function initHeaderScroll() {
     // Get header element
@@ -126,11 +44,7 @@ function initHeaderScroll() {
 }
 
 /*
-=====================================================
 RACE COUNTDOWN TIMER
-=====================================================
-Displays a countdown to the next race date.
-Updates every second to show days, hours, minutes, seconds.
 */
 function initCountdown() {
     // Set the target date for the next race
@@ -189,11 +103,7 @@ function initCountdown() {
 }
 
 /*
-=====================================================
 NEWSLETTER FORM VALIDATION
-=====================================================
-Handles newsletter form submission with validation.
-Provides user feedback for success/error states.
 */
 function initNewsletterForm() {
     // Get form element
@@ -256,10 +166,7 @@ function initNewsletterForm() {
 }
 
 /*
-=====================================================
 FORM MESSAGE HELPER
-=====================================================
-Displays success or error messages below the form.
 */
 function showFormMessage(message, type) {
     // Get form element
@@ -299,11 +206,7 @@ function showFormMessage(message, type) {
 }
 
 /*
-=====================================================
 SMOOTH SCROLL FOR ANCHOR LINKS
-=====================================================
-Enables smooth scrolling when clicking internal links.
-Accounts for fixed header height.
 */
 function initSmoothScroll() {
     // Get all anchor links that point to sections on the page
@@ -345,11 +248,7 @@ function initSmoothScroll() {
 
 
 /*
-=====================================================
 SCROLL ANIMATIONS (INTERSECTION OBSERVER)
-=====================================================
-Triggers animations when elements come into view.
-Uses Intersection Observer API for performance.
 */
 function initScrollAnimations() {
     // Select elements to animate
@@ -412,11 +311,7 @@ function initScrollAnimations() {
 }
 
 /*
-=====================================================
 PARTNERS SLIDER DUPLICATION
-=====================================================
-Duplicates partner logos for infinite scroll effect.
-CSS handles the actual animation.
 */
 function initPartnersSlider() {
     // Get the partners track element
@@ -437,10 +332,7 @@ function initPartnersSlider() {
 }
 
 /*
-=====================================================
 ADDITIONAL UTILITY FUNCTIONS
-=====================================================
-Helper functions for various tasks.
 */
 
 /**
@@ -492,10 +384,7 @@ function throttle(func, limit) {
 }
 
 /*
-=====================================================
 ERROR HANDLING
-=====================================================
-Global error handler for debugging.
 */
 window.addEventListener('error', function (event) {
     // Log errors to console (in production, this would send to a logging service)
@@ -503,10 +392,7 @@ window.addEventListener('error', function (event) {
 });
 
 /*
-=====================================================
 KEYBOARD NAVIGATION ENHANCEMENT
-=====================================================
-Improves accessibility for keyboard users.
 */
 document.addEventListener('keydown', function (event) {
     // Add keyboard navigation hints
@@ -522,10 +408,7 @@ document.addEventListener('mousedown', function () {
 });
 
 /*
-=====================================================
 PERFORMANCE OPTIMIZATION
-=====================================================
-Lazy loading and performance improvements.
 */
 
 // Preload critical resources
@@ -542,20 +425,11 @@ function preloadCriticalResources() {
 preloadCriticalResources();
 
 /*
-=====================================================
 CONSOLE WELCOME MESSAGE
-=====================================================
-Fun message for developers who open the console.
 */
 console.log(`
 %c🏎️ ORACLE RED BULL RACING
-%c
-Welcome to the Oracle Red Bull Racing website clone!
 
-This is a front-end demonstration created for educational purposes.
-Built with HTML, CSS, and vanilla JavaScript.
-
-Happy coding! 🏁
 `,
     'color: #CC0000; font-size: 24px; font-weight: bold;',
     'color: #FFD700; font-size: 12px;'
