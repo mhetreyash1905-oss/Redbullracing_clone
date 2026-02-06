@@ -6,48 +6,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize all functionality
     initHeaderScroll();        // Header background on scroll
     initCountdown();           // Race countdown timer
-    initNewsletterForm();      // Newsletter form validation
     initSmoothScroll();        // Smooth scrolling for anchor links
     initScrollAnimations();    // Animate elements on scroll
     initPartnersSlider();      // Partners infinite scroll
 });
 
-
-/*
-HEADER SCROLL EFFECT
-*/
-function initHeaderScroll() {
-    // Get header element
-    const header = document.getElementById('header');
-
-    // Scroll threshold in pixels
-    const scrollThreshold = 100;
-
-    // Function to check scroll position and update header
-    function updateHeader() {
-        // Check if page is scrolled past threshold
-        if (window.scrollY > scrollThreshold) {
-            // Add scrolled class for solid background
-            header.classList.add('scrolled');
-        } else {
-            // Remove scrolled class for transparent background
-            header.classList.remove('scrolled');
-        }
-    }
-
-    // Listen for scroll events
-    // Using passive: true for better scroll performance
-    window.addEventListener('scroll', updateHeader, { passive: true });
-
-    // Run once on page load in case page is already scrolled
-    updateHeader();
-}
-
 /*
 RACE COUNTDOWN TIMER
 */
 function initCountdown() {
-    // Set the target date for the next race
+
     // Australian Grand Prix 2026: March 6, 2026
     const raceDate = new Date('March 6, 2026 14:00:00').getTime();
 
@@ -103,109 +71,6 @@ function initCountdown() {
 }
 
 /*
-NEWSLETTER FORM VALIDATION
-*/
-function initNewsletterForm() {
-    // Get form element
-    const form = document.getElementById('newsletter-form');
-
-    // If form doesn't exist, exit
-    if (!form) return;
-
-    // Handle form submission
-    form.addEventListener('submit', function (event) {
-        // Prevent default form submission (page refresh)
-        event.preventDefault();
-
-        // Get email input
-        const emailInput = document.getElementById('email');
-        const email = emailInput.value.trim();
-
-        // Validate email format using regex
-        // This pattern checks for: something@something.something
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!emailRegex.test(email)) {
-            // Invalid email - show error
-            showFormMessage('Please enter a valid email address.', 'error');
-
-            // Add error styling to input
-            emailInput.classList.add('error');
-
-            // Focus the input for correction
-            emailInput.focus();
-            return;
-        }
-
-        // Valid email - simulate form submission
-        // In a real application, this would send data to a server
-
-        // Remove any error styling
-        emailInput.classList.remove('error');
-
-        // Show success message
-        showFormMessage('Thank you for subscribing! Welcome to The Paddock.', 'success');
-
-        // Clear the input
-        emailInput.value = '';
-
-        // Log to console (for development/demo purposes)
-        console.log('Newsletter subscription:', email);
-    });
-
-    // Remove error styling when user starts typing
-    const emailInput = document.getElementById('email');
-    emailInput.addEventListener('input', function () {
-        this.classList.remove('error');
-        // Remove any existing message
-        const existingMessage = form.querySelector('.form-message');
-        if (existingMessage) {
-            existingMessage.remove();
-        }
-    });
-}
-
-/*
-FORM MESSAGE HELPER
-*/
-function showFormMessage(message, type) {
-    // Get form element
-    const form = document.getElementById('newsletter-form');
-
-    // Remove any existing message
-    const existingMessage = form.querySelector('.form-message');
-    if (existingMessage) {
-        existingMessage.remove();
-    }
-
-    // Create message element
-    const messageElement = document.createElement('p');
-    messageElement.className = `form-message form-message--${type}`;
-    messageElement.textContent = message;
-
-    // Style the message based on type
-    messageElement.style.marginTop = '1rem';
-    messageElement.style.fontSize = '0.875rem';
-    messageElement.style.fontWeight = '600';
-
-    if (type === 'error') {
-        messageElement.style.color = '#CC0000';  // Red Bull red
-    } else if (type === 'success') {
-        messageElement.style.color = '#00CC00';  // Green
-    }
-
-    // Append message to form
-    form.appendChild(messageElement);
-
-    // Auto-remove success message after 5 seconds
-    if (type === 'success') {
-        setTimeout(function () {
-            messageElement.remove();
-        }, 5000);
-    }
-}
-
-/*
 SMOOTH SCROLL FOR ANCHOR LINKS
 */
 function initSmoothScroll() {
@@ -248,10 +113,9 @@ function initSmoothScroll() {
 
 
 /*
-SCROLL ANIMATIONS (INTERSECTION OBSERVER)
+SCROLL ANIMATIONS
 */
 function initScrollAnimations() {
-    // Select elements to animate
     // These elements will fade in when they enter the viewport
     const animatedElements = document.querySelectorAll(
         '.story-card, .team-card, .product-card, .section-header'
@@ -316,15 +180,11 @@ PARTNERS SLIDER DUPLICATION
 function initPartnersSlider() {
     // Get the partners track element
     const partnersTrack = document.querySelector('.partners-track');
-
-    // If track doesn't exist, exit
     if (!partnersTrack) return;
 
     // Get all partner logos
     const partnerLogos = partnersTrack.querySelectorAll('.partner-logo');
 
-    // Clone all logos and append them to create seamless loop
-    // This creates a duplicate set that makes the scroll appear infinite
     partnerLogos.forEach(function (logo) {
         const clone = logo.cloneNode(true);
         partnersTrack.appendChild(clone);
@@ -336,8 +196,6 @@ ADDITIONAL UTILITY FUNCTIONS
 */
 
 /**
- * Debounce function - limits how often a function can fire
- * Useful for scroll and resize event handlers
  * @param {Function} func - The function to debounce
  * @param {number} wait - Wait time in milliseconds
  * @returns {Function} - The debounced function
@@ -363,8 +221,6 @@ function debounce(func, wait) {
 }
 
 /**
- * Throttle function - limits function calls to once per interval
- * Useful for continuous events like scroll
  * @param {Function} func - The function to throttle
  * @param {number} limit - Minimum time between calls in milliseconds
  * @returns {Function} - The throttled function
@@ -384,14 +240,6 @@ function throttle(func, limit) {
 }
 
 /*
-ERROR HANDLING
-*/
-window.addEventListener('error', function (event) {
-    // Log errors to console (in production, this would send to a logging service)
-    console.error('An error occurred:', event.message);
-});
-
-/*
 KEYBOARD NAVIGATION ENHANCEMENT
 */
 document.addEventListener('keydown', function (event) {
@@ -407,9 +255,6 @@ document.addEventListener('mousedown', function () {
     document.body.classList.remove('keyboard-nav');
 });
 
-/*
-PERFORMANCE OPTIMIZATION
-*/
 
 // Preload critical resources
 function preloadCriticalResources() {
@@ -424,12 +269,8 @@ function preloadCriticalResources() {
 // Run preload on page load
 preloadCriticalResources();
 
-/*
-CONSOLE WELCOME MESSAGE
-*/
 console.log(`
 %c🏎️ ORACLE RED BULL RACING
-
 `,
     'color: #CC0000; font-size: 24px; font-weight: bold;',
     'color: #FFD700; font-size: 12px;'

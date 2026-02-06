@@ -1,0 +1,31 @@
+js js js js js js js js js js js
+
+/*
+HEADER SCROLL EFFECT
+*/
+function initHeaderScroll() {
+    // Get header element
+    const header = document.getElementById('header');
+
+    // Scroll threshold in pixels
+    const scrollThreshold = 100;
+
+    // Function to check scroll position and update header
+    function updateHeader() {
+        // Check if page is scrolled past threshold
+        if (window.scrollY > scrollThreshold) {
+            // Add scrolled class for solid background
+            header.classList.add('scrolled');
+        } else {
+            // Remove scrolled class for transparent background
+            header.classList.remove('scrolled');
+        }
+    }
+
+    // Listen for scroll events
+    // Using passive: true for better scroll performance
+    window.addEventListener('scroll', updateHeader, { passive: true });
+
+    // Run once on page load in case page is already scrolled
+    updateHeader();
+}
